@@ -1,16 +1,16 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////
-// Description : A program to parse real-price housing information in our country                //
-//				and find the average of all sale prices matching some condition.                 //
-//                                                                                               //
-//                                                                                               //
-// Input Argument : url, area, road name, year                                                   //
-//				ex : http://www.datagarage.io/api/5365dee31bc6e9d9463a0057 ¤å¤s°Ï ¨¯¥è¸ô 103     // 
-//                                                                                               //
-// Output : the average of all sale prices matching the condition                                //
-//                                                                                               //
-//                                                                                               //
-// Date : 2014/6/26                                                                              //
-///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Description : A program to parse real-price housing information in our country                                        //
+//				and find the average of all sale prices matching some condition.                         //
+//                                                                                                                       //
+//                                                                                                                       //
+// Input Argument : url, area, road name, year                                                                           //
+//				ex : http://www.datagarage.io/api/5365dee31bc6e9d9463a0057 ï¿½ï¿½ï¿½sï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 103     // 
+//                                                                                                                       //
+// Output : the average of all sale prices matching the condition                                                        //
+//                                                                                                                       //
+//                                                                                                                       //
+// Date : 2014/6/26                                                                                                      //
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -41,19 +41,19 @@ public class TocHw3 {
 		for (int i = 0; i < jsonArr.length(); i++) 
 		{
 			JSONObject first = jsonArr.getJSONObject(i);
-			long year = (long) first.getLong("¥æ©ö¦~¤ë");
-			long price = (long) first.getLong("Á`»ù¤¸");
+			long year = (long) first.getLong("ï¿½ï¿½ï¿½ï¿½ï¿½~ï¿½ï¿½");
+			long price = (long) first.getLong("ï¿½`ï¿½ï¿½ï¿½ï¿½");
 			Pattern pattern1 = Pattern.compile(".*"+str1+".*");
 			Pattern pattern2 = Pattern.compile(".*"+str2+".*");
-			Matcher matcher1 = pattern1.matcher((CharSequence) first.get("¶mÂí¥«°Ï"));
-			Matcher matcher2 = pattern2.matcher((CharSequence) first.get("¤g¦a°Ï¬q¦ì¸m©Î«Øª«°ÏªùµP"));
+			Matcher matcher1 = pattern1.matcher((CharSequence) first.get("ï¿½mï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"));
+			Matcher matcher2 = pattern2.matcher((CharSequence) first.get("ï¿½gï¿½aï¿½Ï¬qï¿½ï¿½ï¿½mï¿½Î«Øªï¿½ï¿½Ïªï¿½ï¿½P"));
 			if((matcher1.matches())&&(matcher2.matches()))
 			{
 				if(year>(Integer.parseInt(args[3])*100))
 				{
 					num++;
 					sum+=price;
-					//System.out.println("¶mÂí¥«°Ï : "+first.get("¶mÂí¥«°Ï")+"  ¤g¦a°Ï¬q¦ì¸m©Î«Øª«°ÏªùµP : "+first.get("¤g¦a°Ï¬q¦ì¸m©Î«Øª«°ÏªùµP")+"  ¥æ©ö¦~¤ë : "+year);
+					//System.out.println("ï¿½mï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : "+first.get("ï¿½mï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")+"  ï¿½gï¿½aï¿½Ï¬qï¿½ï¿½ï¿½mï¿½Î«Øªï¿½ï¿½Ïªï¿½ï¿½P : "+first.get("ï¿½gï¿½aï¿½Ï¬qï¿½ï¿½ï¿½mï¿½Î«Øªï¿½ï¿½Ïªï¿½ï¿½P")+"  ï¿½ï¿½ï¿½ï¿½ï¿½~ï¿½ï¿½ : "+year);
 				}
 			}
 		}
