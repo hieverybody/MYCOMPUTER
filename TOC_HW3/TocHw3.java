@@ -4,7 +4,7 @@
 //                                                                                                                       //
 //                                                                                                                       //
 // Input Argument : url, area, road name, year                                                                           //
-//				ex : http://www.datagarage.io/api/5365dee31bc6e9d9463a0057 ���s�� ������ 103     // 
+//				ex : http://www.datagarage.io/api/5365dee31bc6e9d9463a0057 文山區 辛亥路 103             // 
 //                                                                                                                       //
 // Output : the average of all sale prices matching the condition                                                        //
 //                                                                                                                       //
@@ -41,19 +41,19 @@ public class TocHw3 {
 		for (int i = 0; i < jsonArr.length(); i++) 
 		{
 			JSONObject first = jsonArr.getJSONObject(i);
-			long year = (long) first.getLong("�����~��");
-			long price = (long) first.getLong("�`����");
+			long year = (long) first.getLong("交易年月");
+			long price = (long) first.getLong("總價元");
 			Pattern pattern1 = Pattern.compile(".*"+str1+".*");
 			Pattern pattern2 = Pattern.compile(".*"+str2+".*");
-			Matcher matcher1 = pattern1.matcher((CharSequence) first.get("�m������"));
-			Matcher matcher2 = pattern2.matcher((CharSequence) first.get("�g�a�Ϭq���m�Ϋت��Ϫ��P"));
+			Matcher matcher1 = pattern1.matcher((CharSequence) first.get("鄉鎮市區"));
+			Matcher matcher2 = pattern2.matcher((CharSequence) first.get("土地區段位置或建物區門牌"));
 			if((matcher1.matches())&&(matcher2.matches()))
 			{
 				if(year>(Integer.parseInt(args[3])*100))
 				{
 					num++;
 					sum+=price;
-					//System.out.println("�m������ : "+first.get("�m������")+"  �g�a�Ϭq���m�Ϋت��Ϫ��P : "+first.get("�g�a�Ϭq���m�Ϋت��Ϫ��P")+"  �����~�� : "+year);
+					//System.out.println("鄉鎮市區 : "+first.get("鄉鎮市區")+"  土地區段位置或建物區門牌 : "+first.get("土地區段位置或建物區門牌")+"  交易年月 : "+year);
 				}
 			}
 		}
